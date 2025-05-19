@@ -1,0 +1,23 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: notes-server-dev
+  namespace: notes-ns
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: notes-server-label
+  template:
+    metadata:
+      name: notes-server-pod
+      labels:
+        app: notes-server-label
+  spec:        
+     containers:
+       - name: notes-server-con
+         image: suryasuraj/notes-server:latest
+         ports:
+           - containerPort: 7000
+
+
