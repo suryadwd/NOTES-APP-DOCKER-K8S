@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
+
+
 const Outputfield = ({ data }) => {
   return (
     <div className="bg-gray-200 text-black p-4 rounded-lg ">

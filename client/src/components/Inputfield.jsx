@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import axios from "axios";
+
+const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:7000";
+
 const Inputfield = ({ torefresh }) => {
   const [data, setData] = useState("");
 
   const handleButtonClick = async () => {
     try {
       const res = await axios.post(
-        "http://localhost:7000/api/data/send",
+        `${API_BASE_URL}/api/data/send`,
         { content: data },
         { withCredentials: true }
       );
