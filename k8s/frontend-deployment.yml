@@ -1,0 +1,24 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: notes-client-dev
+  namespace: notes-ns
+spec:
+  replicas: 1
+  seletor:
+    matchLabels:
+      app: notes-client-label
+  template: 
+    metadata:
+      name: notes-client-pod
+      labels:
+        app: notes-client-label
+  spec:
+    containers:
+      - name: notes-client-con
+        image: suryasuraj/notes-client:latest
+        ports:
+          - containerPort: 5173
+        env:
+          - name: REACT_APP_API_URL
+            value: "http://backend-service:7000"
