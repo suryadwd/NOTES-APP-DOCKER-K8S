@@ -1,0 +1,33 @@
+#----------------------------- base image ----------------------------------------
+FROM node:18-alpine AS base
+# a working directory for docker
+WORKDIR /app
+
+#----------------------------- builder stage---------------------------------------
+
+#create base image for bulder stage from above base refernce with name builder
+FROM base AS builder
+#copy pcakages and tsconfig files in app
+COPY package*.json .
+# install dependencies in app
+RUN  npm install
+#copy all data from ths host to the docker
+COPY . .
+# build the app as this is build stage
+RUN npm run build
+
+#------------------------------production stage--------------------------------------
+
+#create base image for production stage from above refernce with a name production 
+FROM base AS production
+#copy data from the builder stage not from the local 
+# 1 -> copy the dist folder from builder
+COPY --from=builder /app/dist ./dist
+# 2 -> copy pacakges and config file from the builder
+COPY --from=builder /app/package*.json .
+# intall 
+RUN npm install --omit=dev
+# run the app 
+CMD ["node","dist/index.js"]
+
+# you mighjt thinking writing this much of copy copy will incrs the siaze but copying will copy only the latest data and remove the previous data 
