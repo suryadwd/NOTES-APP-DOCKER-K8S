@@ -21,6 +21,11 @@ RUN npm run build
 #create base image for production stage from above refernce with a name production 
 FROM base AS production
 #copy data from the builder stage not from the local 
+WORKDIR /app
+
+# Install serve globally inside container
+RUN npm install -g serve
+
 # 1 -> copy the dist folder from builder
 COPY --from=builder /app/dist ./dist
 # 2 -> copy pacakges and config file from the builder
@@ -28,6 +33,7 @@ COPY --from=builder /app/package*.json .
 # intall 
 RUN npm install --omit=dev
 # run the app 
-CMD ["node","dist/index.js"]
+# CMD ["node","dist/index.html"]
+CMD ["serve", "-s", "dist", "-l", "5173"]
 
 # you mighjt thinking writing this much of copy copy will incrs the siaze but copying will copy only the latest data and remove the previous data 

@@ -1,0 +1,16 @@
+#-------------------------base Image-----------------------------------
+FROM node:18-alpine AS base
+WORKDIR /app
+
+#--------------------------builder stage-----------------------------
+FROM base AS builder
+COPY package*.json .
+RUN npm install
+COPY . .
+
+#------------------------------Production stage-----------------------
+FROM base AS prod
+#copy the app from teh build stage
+COPY --from=builder /app /app
+RUN npm install --omit=dev
+CMD ["node","server.js"]
