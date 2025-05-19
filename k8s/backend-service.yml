@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: notes-server-Service
+  namespace: notes-ns
+spec:
+  selector:
+    app: notes-server-label
+  ports:
+    - protocol: TCP
+      port: 7000
+      targetPort: 7000

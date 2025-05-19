@@ -1,0 +1,13 @@
+Kind: Service
+apiVersion: v1
+metadata:
+  name: notes-client-Service
+  namespace: notes-ns
+spec:
+  selector:
+    app: notes-client-label
+  ports:
+    - protocol: TCP
+      port: 5173
+      targetPort: 5173
+

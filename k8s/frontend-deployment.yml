@@ -21,4 +21,4 @@ spec:
           - containerPort: 5173
         env:
           - name: REACT_APP_API_URL
-            value: "http://backend-service:7000"
+            value: "http://notes-server-service:7000"
