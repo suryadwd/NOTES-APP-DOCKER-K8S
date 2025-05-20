@@ -1,12 +1,14 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: notes-server-Service
+  name: notes-server-service
   namespace: notes-ns
 spec:
   selector:
     app: notes-server-label
+  type: NodePort
   ports:
     - protocol: TCP
       port: 7000
       targetPort: 7000
+      nodePort: 31001  #acces from browser(30000-32676 range)

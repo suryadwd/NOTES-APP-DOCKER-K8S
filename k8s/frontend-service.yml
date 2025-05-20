@@ -1,13 +1,15 @@
-Kind: Service
+kind: Service
 apiVersion: v1
 metadata:
-  name: notes-client-Service
+  name: notes-client-service
   namespace: notes-ns
 spec:
   selector:
     app: notes-client-label
+  type: NodePort
   ports:
     - protocol: TCP
       port: 5173
       targetPort: 5173
+      nodePort: 31000  # yaha pe browser pe chalega (fixed range 30000-32767)
 

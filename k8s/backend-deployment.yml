@@ -13,7 +13,7 @@ spec:
       name: notes-server-pod
       labels:
         app: notes-server-label
-  spec:        
+    spec:        
      containers:
        - name: notes-server-con
          image: suryasuraj/notes-server:latest

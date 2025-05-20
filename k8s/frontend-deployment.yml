@@ -5,7 +5,7 @@ metadata:
   namespace: notes-ns
 spec:
   replicas: 1
-  seletor:
+  selector:
     matchLabels:
       app: notes-client-label
   template: 
@@ -13,12 +13,10 @@ spec:
       name: notes-client-pod
       labels:
         app: notes-client-label
-  spec:
-    containers:
-      - name: notes-client-con
-        image: suryasuraj/notes-client:latest
-        ports:
-          - containerPort: 5173
-        env:
-          - name: REACT_APP_API_URL
-            value: "http://notes-server-service:7000"
+    spec:
+      containers:
+        - name: notes-client-con
+          image: suryasuraj/notes-client:latest
+          ports:
+            - containerPort: 5173
+      
