@@ -9,7 +9,11 @@ let PORT = process.env.PORT || 8080;
 
 app.use(
   cors({
-    origin: ["http://localhost:5173", "http://k8s.notes.devsurya.space"],
+    origin: [
+      "http://localhost:5173",
+      "https://notes.devsurya.space",
+      "https://apinotes.devsurya.space",
+    ],
     credentials: true,
   })
 );

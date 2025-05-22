@@ -5,16 +5,19 @@ import Inputfield from "./components/Inputfield";
 import Outputfield from "./components/outputfield";
 import axios from "axios";
 
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:7000';
+const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:7000";
 
 const App = () => {
   const [data, setData] = useState([]);
 
   const getData = async () => {
     try {
-      const res = await axios.get(`${API_BASE_URL}/api/data/receive`, {
-        withCredentials: true,
-      });
+      const res = await axios.get(
+        `https://apinotes.devsurya.space//api/data/receive`,
+        {
+          withCredentials: true,
+        }
+      );
       if (res.data.success) {
         setData(res.data.data);
       }

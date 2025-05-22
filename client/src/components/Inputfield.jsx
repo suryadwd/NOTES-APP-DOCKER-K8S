@@ -9,7 +9,7 @@ const Inputfield = ({ torefresh }) => {
   const handleButtonClick = async () => {
     try {
       const res = await axios.post(
-        `${API_BASE_URL}/api/data/send`,
+        `https://apinotes.devsurya.space/api/data/send`,
         { content: data },
         { withCredentials: true }
       );
