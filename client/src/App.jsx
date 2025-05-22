@@ -31,7 +31,7 @@ const App = () => {
     <div className="bg-black text-white h-screen flex items-center justify-center">
       <div>
         <header className="text-4xl font-bold text-center mb-8">
-          My notes{" "}
+          My NoteSpace{" "}
         </header>
         <div className="flex flex-col gap-4">
           <Outputfield data={data} />
